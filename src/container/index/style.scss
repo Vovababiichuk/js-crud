@@ -12,7 +12,13 @@
   margin: 0 auto;
   backdrop-filter: blur(28px);
   box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
-  border-radius: 10px;
+  border-radius: 12px;
+
+  &:hover {
+    box-shadow: 0 0 25px #00b3ff, 0 0 15px #00b3ff;
+    backdrop-filter: blur(38px);
+    outline: 3px solid #00b3ff;
+  }
 }
 
 .form {
@@ -50,27 +56,30 @@
   &__input {
     border: 1px solid s.color('light');
     padding: s.space(2);
+    transition: box-shadow 0.2s linear;
     &:focus {
-      outline: 2px solid rgb(0, 225, 255);
-      box-shadow: 0px 0px 10px rgba(0, 255, 208, 0.9);
+      outline: 2px solid rgb(0, 234, 255);
+      box-shadow: 0px 0px 15px rgb(0, 234, 255);
+    }
+    &:hover {
+      box-shadow: 0px 0px 15px #33d3ff;
     }
   }
 
   &__button {
     border: 1px solid s.color('light');
-    padding: s.space(2);
+    padding: 10px 130px;
     border-radius: 20px;
     transition: all 0.2s ease-in-out;
     max-width: 300px;
     margin: 0 auto;
-    padding: 10 130px;
     color: #fff;
     &:hover {
-      background-color: purple;
-      box-shadow: 0px 0px 10px rgba(0, 255, 208, 0.9);
+      // background-color: rgb(0, 23, 53);
+      background-color: rgba(0, 34, 46, 0.438);
+      box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
 
       color: white;
-
     }
   }
 }
@@ -83,14 +92,21 @@ main {
 
 .user-list {
   li {
-    padding: 5px;
+    padding: 8px 0;
     // background-color: rgb(109, 255, 114);
   }
 
   a {
-    color: red;
-    padding: 3px;
+    background-color: rgb(255, 67, 67);
+    padding: 3px 6px;
     text-decoration: none;
+    color: #fff;
+    border-radius: 12px;
+    margin-left: 10px;
+    transition: box-shadow 0.2s linear;
+    &:hover {
+      box-shadow: 0 0 20px #ff0000;
+    }
   }
 
   mark {
@@ -98,3 +114,5 @@ main {
     border-radius: 5px;
   }
 }
+
+

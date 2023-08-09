@@ -10,7 +10,12 @@
   margin: 0 auto;
   backdrop-filter: blur(28px);
   box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
-  border-radius: 10px;
+  border-radius: 12px;
+}
+.wrap:hover {
+  box-shadow: 0 0 25px #00b3ff, 0 0 15px #00b3ff;
+  backdrop-filter: blur(38px);
+  outline: 3px solid #00b3ff;
 }
 
 .form {
@@ -44,24 +49,27 @@
 .form__input {
   border: 1px solid #ddd;
   padding: 8px;
+  transition: box-shadow 0.2s linear;
 }
 .form__input:focus {
-  outline: 2px solid rgb(0, 225, 255);
-  box-shadow: 0px 0px 10px rgba(0, 255, 208, 0.9);
+  outline: 2px solid rgb(0, 234, 255);
+  box-shadow: 0px 0px 15px rgb(0, 234, 255);
+}
+.form__input:hover {
+  box-shadow: 0px 0px 15px #33d3ff;
 }
 .form__button {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 10px 130px;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
   max-width: 300px;
   margin: 0 auto;
-  padding: 10 130px;
   color: #fff;
 }
 .form__button:hover {
-  background-color: purple;
-  box-shadow: 0px 0px 10px rgba(0, 255, 208, 0.9);
+  background-color: rgba(0, 34, 46, 0.438);
+  box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
   color: white;
 }
 
@@ -72,12 +80,19 @@ main {
 }
 
 .user-list li {
-  padding: 5px;
+  padding: 8px 0;
 }
 .user-list a {
-  color: red;
-  padding: 3px;
+  background-color: rgb(255, 67, 67);
+  padding: 3px 6px;
   text-decoration: none;
+  color: #fff;
+  border-radius: 12px;
+  margin-left: 10px;
+  transition: box-shadow 0.2s linear;
+}
+.user-list a:hover {
+  box-shadow: 0 0 20px #ff0000;
 }
 .user-list mark {
   padding: 6px;

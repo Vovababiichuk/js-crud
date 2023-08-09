@@ -7,7 +7,7 @@
   <section>
     <div class="container">
       <div class="wrap">
-        <div class="form">
+        <div class="form" id="myForm">
           <h1 class="form__title">Create a user</h1>
           <form method="POST" action="/user-create">
             <div class="form__content">
@@ -23,7 +23,7 @@
                 <label for="password" class="form__label">Password:</label>
                 <input type="password" name="password" class="form__input">
               </div>
-              <button class="form__button">Create</button>
+              <button class="form__button" type="submit">Create</button>
             </div>
           </form>
         </div>
@@ -42,7 +42,8 @@
             {{else}}
             <ul>
               {{#each list}}
-              <li>{{email}} | {{login}} | {{id}} <a href="/user-delete?id={{id}}">(delete)</a></li>
+              <li>{{email}} | {{login}} | {{id}} <a
+                  href="/user-delete?id={{id}}">delete</a></li>
               {{/each}}
             </ul>
             {{/if}}
@@ -71,7 +72,7 @@
                 <label for="password" class="form__label">Password:</label>
                 <input type="password" name="password" class="form__input">
               </div>
-              <button class="form__button">Send</button>
+              <button class="form__button" type="submit">Send</button>
             </div>
           </form>
         </div>
