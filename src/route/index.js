@@ -103,7 +103,7 @@ router.post('/user-create', function (req, res) {
 
   res.render('success-info', {
     style: 'success-info',
-    info: 'The user created',
+    info: 'The user is created',
   })
 })
 

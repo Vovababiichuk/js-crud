@@ -4,10 +4,15 @@
   font-size: 24px;
 }
 .user-created h1 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .user-created a {
   color: yellow;
+  font-size: 28px;
+}
+.user-created a:hover {
+  text-decoration: none;
+  text-shadow: 0 0 10px #f2ff00;
 }
 
 .wrap {
@@ -17,6 +22,11 @@
   box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
   border-radius: 10px;
   margin-top: 80px;
+}
+.wrap:hover {
+  box-shadow: 0 0 25px #00b3ff, 0 0 15px #00b3ff;
+  backdrop-filter: blur(38px);
+  outline: 3px solid #00b3ff;
 }
 
 /*# sourceMappingURL=style.css.map */
