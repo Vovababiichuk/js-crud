@@ -3,19 +3,21 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 20px;
+  position: relative;
 }
 
 .wrap {
   max-width: 700px;
   margin: 0 auto;
   backdrop-filter: blur(28px);
-  box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
+  box-shadow: 0 0 15px #00b3ff, 0 0 10px #00b3ff;
   border-radius: 12px;
+  border: 2px solid #00b3ff;
+  transition: box-shadow 0.2s;
 }
 .wrap:hover {
-  box-shadow: 0 0 25px #00b3ff, 0 0 15px #00b3ff;
-  backdrop-filter: blur(38px);
-  outline: 3px solid #00b3ff;
+  box-shadow: 0 0 25px #00b3ff, 0 0 13px #00b3ff, 0 0 10px #00b3ff;
+  outline: 2px solid #00b3ff;
 }
 
 .form {
@@ -49,18 +51,19 @@
 .form__input {
   border: 1px solid #ddd;
   padding: 8px;
-  transition: box-shadow 0.2s linear;
+  transition: box-shadow 0.1s linear;
 }
 .form__input:focus {
   outline: 2px solid rgb(0, 234, 255);
-  box-shadow: 0px 0px 15px rgb(0, 234, 255);
+  border-color: transparent;
 }
 .form__input:hover {
-  box-shadow: 0px 0px 15px #33d3ff;
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
 }
 .form__button {
   border: 1px solid #ddd;
-  padding: 10px 130px;
+  padding: 10px 0;
+  width: 100%;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
   max-width: 300px;
@@ -68,8 +71,9 @@
   color: #fff;
 }
 .form__button:hover {
-  background-color: rgba(0, 34, 46, 0.438);
-  box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
+  background-color: rgba(46, 1, 65, 0.359);
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
+  border-color: transparent;
   color: white;
 }
 
@@ -97,6 +101,61 @@ main {
 .user-list mark {
   padding: 6px;
   border-radius: 5px;
+}
+
+.play-btn {
+  cursor: pointer;
+  color: #fff;
+  font-size: 30px;
+  padding-top: 50px;
+  position: absolute;
+  top: 0;
+  left: 30px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulsating-icon {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@media (max-width: 960px) {
+  .form__content {
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    gap: 0;
+  }
+  .form__button {
+    width: 100%;
+  }
+  .play-btn {
+    cursor: pointer;
+    color: #fff;
+    font-size: 30px;
+    padding-top: 50px;
+    position: absolute;
+    top: -40px;
+    left: 40px;
+    z-index: 100;
+    padding-top: 5px;
+  }
+  main {
+    padding-top: 55px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
