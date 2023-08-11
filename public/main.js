@@ -41,6 +41,8 @@ updateForm.addEventListener('submit', function (event) {
   }
 })
 
+// Audio===========================
+
 const audio = document.getElementById("myAudio");
 const playButton = document.getElementById("playButton");
 
@@ -53,3 +55,6 @@ function togglePlay() {
     playButton.innerHTML = '<i class="fa fa-play"></i>';
   }
 }
+
+// Heading Page===================
+
