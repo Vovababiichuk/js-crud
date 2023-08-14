@@ -1,0 +1,106 @@
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.3137254902);
+  background-blend-mode: multiply;
+  background-image: url("/img/bg-product.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 20px 0;
+  height: 100vh;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  position: relative;
+}
+
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  backdrop-filter: blur(22px);
+  box-shadow: 0 0 15px #00b3ff, 0 0 10px #00b3ff;
+  border-radius: 12px;
+  border: 2px solid #00b3ff;
+  transition: box-shadow 0.2s;
+  text-align: center;
+}
+.wrap:hover {
+  box-shadow: 0 0 25px #00b3ff, 0 0 13px #00b3ff, 0 0 10px #00b3ff;
+  outline: 2px solid #00b3ff;
+}
+
+.product-delete .product-delete__title {
+  padding-bottom: 40px;
+  font-size: 28px;
+  text-align: center;
+}
+.product-delete .product-delete__inner {
+  font-size: 18px;
+}
+.product-delete .product-delete__inner form {
+  padding: 50px 0;
+}
+.product-delete .product-delete__inner form .delete-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+.product-delete .product-delete__inner form .delete-flex .label-id,
+.product-delete .product-delete__inner form .delete-flex .label-name {
+  color: rgb(255, 255, 79);
+  text-align: center;
+}
+.product-delete .product-delete__inner form .delete-flex .delete-text {
+  color: rgb(255, 255, 79);
+  font-size: 20px;
+}
+
+.delete-btn,
+.delete-link {
+  border: 2px dotted rgb(255, 54, 18);
+  padding: 10px 20px;
+  color: rgb(255, 54, 18);
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+}
+.delete-btn:hover,
+.delete-link:hover {
+  background-color: rgba(46, 1, 65, 0.359);
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
+  border-color: transparent;
+  color: white;
+}
+
+.delete-link {
+  text-decoration: none;
+  border-color: #fff;
+  color: #fff;
+}
+
+.label-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(255, 54, 18);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: left;
+}
+
+@media screen and (max-width: 400px) {
+  .delete-flex {
+    padding: 15px;
+  }
+  .product-delete .product-delete__inner form {
+    padding: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

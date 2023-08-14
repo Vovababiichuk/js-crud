@@ -1,0 +1,22 @@
+<main>
+   <section class="product-list">
+      <div class="wrapper">
+         <div class="container">
+            <div class="product-create__menu">
+               <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+               <a class="product-list__link" href="/product-create"><i class="fa-solid fa-circle-plus"></i> Create a product</a>
+            </div>
+            <h1 class="product-list__title">List of products</h1>
+            <div class="product-cards">
+               {{#with data}}
+               {{#each products}}
+               <div class="wrap">
+                  {{> product-card}}
+               </div>
+               {{/each}}
+               {{/with}}
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

@@ -1,0 +1,85 @@
+<main>
+   <section class="product-edit">
+      <div class="wrapper">
+         <div class="container">
+            <div class="product-edit__menu">
+               <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+               <a class="product-edit__link-list" href="/product-list"><i class="fa-solid fa-list-check"></i> List of products</a>
+            </div>
+            <h1 class="product-edit__title">Edit the product</h1>
+            <div class="wrap">
+               <div class="form" id="myForm">
+                  <form method="POST" action="/product-edit">
+                     <h2 class="form__title">Product information</h2>
+                     <div class="form__content">
+                        {{#with data.product}}
+                        <div class="wrap-input">
+
+                           <div class="form__field">
+                              <label for="name" class="form__label">Product name</label>
+                              <input type="text" name="name" class="form__input form__input--space"
+                                 value="{{name}}">
+                           </div>
+                           <div class="form__field">
+                              <label for="price" class="form__label">Price</label>
+                              <input type="text" name="price"
+                                 class="form__input form__input--size"
+                                 oninput="validatePrice(this)"
+                                 value="{{price}}">
+                           </div>
+                           <div class="form__field">
+                              <label for="id" class="form__label">ID</label>
+                              <input type="number" name="id" class="form__input form__input--size"
+                                 value="{{id}}" readonly>
+                           </div>
+                        </div>
+                        <div class="form__field">
+                           <label for="description" class="form__label">Short
+                              product description</label>
+                           <input type="text" class="form__textarea form__textarea--space" name="description"
+                              id="description" value="{{description}}"></input>
+                        </div>
+
+                        <div class="product-edit__links">
+                           <button class="form__button" type="submit">Save the
+                              update</button>
+                           <a href="/product-delete?id={{id}}" class="form__button" type="submit">Delete the
+                              product</a>
+                        </div>
+                        {{/with}}
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>
+<script>
+   const createForm = document.querySelector('form[action="/product-create"]');
+
+createForm.addEventListener('submit', function (event) {
+  const inputs = createForm.querySelectorAll('input');
+  let isValid = true;
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value.trim() === '') {
+      isValid = false;
+      break;
+    }
+  }
+
+  if (!isValid) {
+    event.preventDefault();
+    alert('Будь ласка, заповніть всі поля форми перед відправкою.');
+  }
+});
+
+function validatePrice(input) {
+  if (isNaN(input.value) || input.value <= 0) {
+    input.setCustomValidity('Будь ласка, введіть коректне число для ціни.');
+  } else {
+    input.setCustomValidity('');
+  }
+}
+</script>
