@@ -206,7 +206,7 @@ class Product {
       this.#list.push(
         new Product('Apple iPhone 14 Pro Max', 800, "Екран (6.7\", OLED (Super Retina XDR), 2796x1290) / Apple A16 Bionic / основна квадро-камера: 48 Мп + 12 Мп + 12 Мп ..."),
         new Product('Apple MacBook Pro 16" M2', 930, "Екран 16.2\" Liquid Retina XDR (3456x2234) 120 Гц, глянсовий / Apple M2 Pro / RAM 16 ГБ / SSD 512 ГБ / Apple M2 Pro Graphics ..."),
-        new Product('Ноутбук', 1000, "Екран (з 15-дюймів, тип екрану) / Процесор (тип процесора) / ОЗП (тип і кількість пам'яті) / Накопичувач ..."),
+        new Product('Apple MacBook Air 15.3', 1000, "Екран (з 15-дюймів, тип екрану) / Процесор (тип процесора) / ОЗП (тип і кількість пам'яті) / Накопичувач ..."),
       )
 
       this.initialized = true
