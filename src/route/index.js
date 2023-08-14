@@ -10,14 +10,31 @@ const router = express.Router()
 // ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/', function (req, res) {
   // res.render генерує нам HTML сторінку
-
-  const list = User.getList()
-
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('index', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'index',
-    title: 'CRUD',
+    title: 'JS-PRACTICE',
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ==========================================================================================================
+// ================================================================
+
+// router.get Створює нам один ентпоїнт
+
+// ↙️ тут вводимо шлях (PATH) до сторінки
+router.get('/user-create', function (req, res) {
+  // res.render генерує нам HTML сторінку
+
+  const list = User.getList()
+
+  // ↙️ cюди вводимо назву файлу з сontainer
+  res.render('user-create', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'user-create',
+    title: 'USER-CRUD',
 
     data: {
       users: {
@@ -29,7 +46,8 @@ router.get('/', function (req, res) {
   // ↑↑ сюди вводимо JSON дані
 })
 
-// ================================================================
+//! ==========================USER-1======================================
+//! ==========================USER-1======================================
 
 //* ми маємо дані які нам приходять і нам потрібно їх зберегти. Для цього ми створимо код який буде в середині сервера зберігати дані, взаємодіяти з ними і робити все що нам потрібно...
 
@@ -104,7 +122,7 @@ router.post('/user-create', function (req, res) {
 
   res.render('success-info', {
     style: 'success-info',
-    info: 'The user is created',
+    info: 'The user is created! ✅',
   })
 })
 
@@ -120,7 +138,7 @@ router.get('/user-delete', function (req, res) {
 
   res.render('success-info', {
     style: 'success-info',
-    info: 'The user was removed',
+    info: '⛔ The user was removed!',
   })
 })
 
@@ -143,14 +161,14 @@ router.post('/user-update', function (req, res) {
 
   res.render('success-info', {
     style: 'success-info',
-    info: result ? 'Email is updated' : 'An error occurred',
+    info: result
+      ? 'Email is updated! ✅'
+      : 'An error occurred (wrong password) 🆘',
   })
 })
 
-// ================================================================
-// ===============Product==========================================
-
-// ================================================================
+//! ===============Product-1==========================================
+//! ===============Product-1==========================================
 
 //* Завдання полягає у написанні CRUD для сутності product
 
@@ -170,47 +188,62 @@ router.post('/user-update', function (req, res) {
 // deleteById(id) - Видаляє товар по його ID зі списку створених товарів
 
 //* вище в таблиці ви можете побачити статичні та приватні поля класу Product, які використовуються через клас Product
-
 class Product {
-  static #list = [] // Приватне поле, яке містить список створених товарів
+  static initialized = false
 
-  constructor(id, name, price, description) {
-    this.id = id // Унікальне число з 5 цифр, яке потрібно отримати через функцію Math.random
-    this.createDate = new Date().toISOString() // Дата в форматі ISO рядка, яка створена та додана при створенні об’єкта в методі класу constructor
-    this.name = name // Текстова назва товару
-    this.price = price // Ціна товару, число
-    this.description = description // Текстовий опис товару
+  static #list = []
+
+  constructor(name, price, description) {
+    this.id = Math.floor(Math.random() * 90000) + 10000
+    this.createDate = new Date().toISOString()
+    this.name = name
+    this.price = price
+    this.description = description
   }
 
-  static getList = () => this.#list // Повертає список створених товарів
+  static init() {
+    if (!this.initialized) {
+      this.#list.push(
+        new Product('Apple iPhone 14 Pro Max', 800, "Екран (6.7\", OLED (Super Retina XDR), 2796x1290) / Apple A16 Bionic / основна квадро-камера: 48 Мп + 12 Мп + 12 Мп ..."),
+        new Product('Apple MacBook Pro 16" M2', 930, "Екран 16.2\" Liquid Retina XDR (3456x2234) 120 Гц, глянсовий / Apple M2 Pro / RAM 16 ГБ / SSD 512 ГБ / Apple M2 Pro Graphics ..."),
+        new Product('Ноутбук', 1000, "Екран (з 15-дюймів, тип екрану) / Процесор (тип процесора) / ОЗП (тип і кількість пам'яті) / Накопичувач ..."),
+      )
 
-  static add = (product) => this.#list.push(product) // Додає переданий в аргументі товар в список створених товарів в приватному полі #list
-
-  // Знаходить товар в списку створених товарів за допомогою ID, яке повинно бути числом, та яке передається як аргумент
-  static getById = (id) => {
-    if (typeof id !== 'number') {
-        throw new Error('ID має бути числом');
+      this.initialized = true
     }
-    return this.#list.find((product) => product.id === id);
-}
+  }
 
-  static updateById = (id, data) => {
-    // Оновлює властивості аргументу data в об’єкт товару, який був знайдений по ID. Можна оновлювати price, name, description
+  static getList() {
+    return this.#list
+  }
+
+  static add(product) {
+    this.#list.push(product)
+  }
+
+  static getById(id) {
+    return this.#list.find((product) => product.id === id)
+  }
+
+  static updateById(id, data) {
     const product = this.getById(id)
     if (product) {
-      product.name = data.name || product.name
-      product.price = data.price || product.price
-      product.description = data.description || product.description
+      Object.assign(product, data)
+      return true
+    } else {
+      return false
     }
   }
 
-  static deleteById = (id) => {
-    // Видаляє товар по його ID зі списку створених товарів
+  static deleteById(id) {
     const index = this.#list.findIndex(
       (product) => product.id === id,
     )
     if (index !== -1) {
       this.#list.splice(index, 1)
+      return true
+    } else {
+      return false
     }
   }
 }
@@ -226,16 +259,25 @@ router.get('/product-create', function (req, res) {
 //! Потрібно створити endpoint POST з PATH /product-create який отримує в req.body дані для оновлення product
 
 router.post('/product-create', function (req, res) {
-  const { name, price, description } = req.body;
-  const id = Math.floor(Math.random() * 90000) + 10000;
-  const createDate = new Date().toISOString();
-  const product = new Product(id, name, price, description, createDate);
+  const { name, price, description } = req.body
 
-  Product.add(product);
-
-  res.render('container/alert', { message: 'Product created successfully' });
-});
-
+  if (!name || !price || !description) {
+    res.render('alert', {
+      style: 'alert',
+      message:
+        '🆘 Product not created (add a short description of the product)!',
+      added: false,
+    })
+  } else {
+    const product = new Product(name, price, description)
+    Product.add(product)
+    res.render('alert', {
+      style: 'alert',
+      message: '✅ Success! The product was created',
+      added: true,
+    })
+  }
+})
 
 // вище на фото ви можете побачити форму створення нового об’єкту товару в container/product-create, в якій потрібно вказати атрибут method: POST, action: /product-create
 
@@ -255,11 +297,20 @@ router.post('/product-create', function (req, res) {
 
 //! Потрібно створити GET endpoint з PATH /product-list який повертає container/product-list
 
-router.get('/product-list', (req, res) => {
-  const products = Product.getList();
-  res.render('/product-list', { products });
-});
+router.get('/product-list', function (req, res) {
+  if(!Product.initialized) {
+    Product.init();
+  }
 
+  const products = Product.getList()
+
+  res.render('product-list', {
+    style: 'product-list',
+    data: {
+      products,
+    },
+  })
+})
 
 // вище на фото ви можете побачити дизайн інтерфейсу для container/product-list, в якому потрібно реалізувати список товарів
 
@@ -271,15 +322,24 @@ router.get('/product-list', (req, res) => {
 
 //! Потрібно створити GET endpoint з PATH /product-edit який приймає query параметр з назвою id в посиланні та повертає container/product-edit з даними товару
 
-router.get('/product-edit', (req, res) => {
-  const id = parseInt(req.query.id); // Отримуємо з req.query властивість id
-  const product = Product.getById(id); // За допомогою id отримуємо об’єкт сутності product з таким id
-  if (product) {
-      res.render('/product-edit', { product }); // Прокидаємо дані отриманого товару в container та виводимо дані товару в полях форми в container/product-edit
+router.get('/product-edit', function (req, res) {
+  const { id } = req.query
+  const product = Product.getById(Number(id))
+  if (!product) {
+    res.render('alert', {
+      style: 'alert',
+      message: '🆘 Product with that ID was not found!',
+      added: false,
+    })
   } else {
-      res.render('/alert', { message: 'Товар з таким ID не знайдено' }); // Якщо при пошуку product по id не було знайдено такого товару, то відображаємо container/alert з інформацією "Товар з таким ID не знайдено"
+    res.render('product-edit', {
+      style: 'product-edit',
+      data: {
+        product,
+      },
+    })
   }
-});
+})
 
 // вище на фото ви можете побачити дизайн інтерфейсу для container/product-edit, в якому потрібно реалізувати форму редагування даних товару
 
@@ -292,17 +352,36 @@ router.get('/product-edit', (req, res) => {
 
 //! Потрібно створити endpoint POST з PATH /product-edit який отримує в req.body дані для оновлення product
 
-router.post('/product-update', (req, res) => {
-  const id = parseInt(req.body.id); // Через req.body отримуємо оновлені дані товару (name, price, description) та id товару
-  const data = {
-      name: req.body.name,
-      price: parseFloat(req.body.price),
-      description: req.body.description
-  };
-  Product.updateById(id, data); // За допомогою id товару оновлюємо дані в товарі (name, price, description)
-  res.render('/alert', { 
-    message: 'Товар успішно оновлено' 
-  }); // Після успішного або неуспішного виконання операції відображаємо container/alert з інформацією про результат виконання операції
+router.post('/product-edit', function (req, res) {
+  const { id, name, price, description } = req.body;
+  const product = Product.getById(Number(id));
+
+  if (!product) {
+    res.render('alert', {
+      style: 'alert',
+      message: '🆘 Product with that ID was not found!',
+    });
+  } else {
+    const isChanged = name !== product.name || price !== product.price || description !== product.description;
+
+    if (!isChanged) {
+      return res.render('alert', {
+        style: 'alert',
+        message: '⚠️ Make changes to at least one field',
+        id,
+        isCheck: true,
+      });
+    }
+
+    product.name = name;
+    product.price = price;
+    product.description = description;
+    res.render('alert', {
+      style: 'alert',
+      message: '✅ Success! Product updated!',
+      added: true,
+    });
+  }
 });
 
 // вище на фото ви можете побачити форму редагування даних товару з container/product-edit, в якій потрібно вказати атрибут method: POST, action: /product-edit
@@ -316,11 +395,25 @@ router.post('/product-update', (req, res) => {
 
 //! Потрібно створити GET endpoint з PATH /product-delete який приймає query параметр з назвою id в посилані
 
-router.get('/product-delete', (req, res) => {
-  const id = parseInt(req.query.id); // Через req.query отримуємо id товару
-  Product.deleteById(id); // За допомогою id товару видаляємо товар
-  res.render('container/alert', { message: 'Товар успішно видалено' }); // Після успішного або неуспішного виконання операції відображаємо container/alert з інформацією про результат виконання операції
-});
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
+  const product = Product.getById(Number(id))
+
+  if (!product) {
+    res.render('alert', {
+      style: 'alert',
+      message: '🆘 Product with that ID was not found!',
+      added: false,
+    })
+  } else {
+    res.render('product-delete', {
+      style: 'product-delete',
+      data: {
+        product,
+      },
+    })
+  }
+})
 
 // вище на фото ви можете побачити форму редагування даних товару з container/product-edit, в якій потрібно:
 // - зробити кнопку-посилання "Видалити товар"
@@ -331,7 +424,34 @@ router.get('/product-delete', (req, res) => {
 // в ендпоїнті /product-delete потрібно:
 // - через req.query отримати id товару
 // - за допомогою id товару видалити товар
+// - після успішного або неуспішного виконання операції потрібно відобразити container/alert з інформацією про результат виконання операції
 
+// POST endpoint to handle product deletion
+router.post('/product-delete', function (req, res) {
+  const { id } = req.body
+  const product = Product.getById(Number(id))
+
+  if (!product) {
+    res.render('alert', {
+      style: 'alert',
+      message: '🆘 Product with that ID was not found!',
+    })
+  } else {
+    const deleted = Product.deleteById(Number(id))
+    if (deleted) {
+      res.render('alert', {
+        style: 'alert',
+        message: '⛔ Product deleted!',
+        added: true,
+      })
+    } else {
+      res.render('alert', {
+        style: 'alert',
+        message: '🆘 Could not delete the product',
+      })
+    }
+  }
+})
 // ===========================================================================
 
 // Підключаємо роутер до бек-енду

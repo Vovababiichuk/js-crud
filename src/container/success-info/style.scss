@@ -1,3 +1,17 @@
+.wrapper {
+  background-color: #00000030;
+  background-blend-mode: multiply;
+  background-image: url('/img/bg-user.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 20px 0;
+  height: 100vh;
+  width: 100%;
+}
+
 .user-created {
   padding: 100px;
   // text-shadow: 2px 2px 4px rgba(179, 0, 255, 0.5);
