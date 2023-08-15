@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
   res.render('index', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'index',
-    title: 'JS-PRACTICE',
+    title: 'JS-PRACTICE-CRUD',
   })
   // ↑↑ сюди вводимо JSON дані
 })
@@ -34,7 +34,7 @@ router.get('/user-create', function (req, res) {
   res.render('user-create', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'user-create',
-    title: 'USER-CRUD',
+    title: 'JS-PRACTICE-CRUD',
 
     data: {
       users: {
@@ -253,6 +253,7 @@ class Product {
 router.get('/product-create', function (req, res) {
   res.render('product-create', {
     style: 'product-create',
+    title: 'JS-PRACTICE-CRUD',
   })
 })
 
@@ -306,6 +307,7 @@ router.get('/product-list', function (req, res) {
 
   res.render('product-list', {
     style: 'product-list',
+    title: 'JS-PRACTICE-CRUD',
     data: {
       products,
     },
@@ -334,6 +336,7 @@ router.get('/product-edit', function (req, res) {
   } else {
     res.render('product-edit', {
       style: 'product-edit',
+      title: 'JS-PRACTICE-CRUD',
       data: {
         product,
       },
@@ -408,6 +411,7 @@ router.get('/product-delete', function (req, res) {
   } else {
     res.render('product-delete', {
       style: 'product-delete',
+      title: 'JS-PRACTICE-CRUD',
       data: {
         product,
       },
