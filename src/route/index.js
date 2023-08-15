@@ -70,8 +70,7 @@ class User {
 
   static getList = () => this.#list
 
-  static getById = (id) =>
-    this.#list.find((user) => user.id === id)
+  static getById = (id) => this.#list.find((user) => user.id === id)
 
   static deleteById = (id) => {
     const index = this.#list.findIndex(
@@ -213,19 +212,13 @@ class Product {
     }
   }
 
-  static getList() {
-    return this.#list
-  }
+  static getList = () => this.#list
 
-  static add(product) {
-    this.#list.push(product)
-  }
+  static add = (product) => this.#list.push(product)
 
-  static getById(id) {
-    return this.#list.find((product) => product.id === id)
-  }
+  static getById = (id) => this.#list.find((product) => product.id === id)
 
-  static updateById(id, data) {
+  static updateById = (id, data) => {
     const product = this.getById(id)
     if (product) {
       Object.assign(product, data)
@@ -235,7 +228,7 @@ class Product {
     }
   }
 
-  static deleteById(id) {
+  static deleteById = (id) => {
     const index = this.#list.findIndex(
       (product) => product.id === id,
     )
