@@ -1,0 +1,301 @@
+.heading {
+  text-align: center;
+  font-size: 18px;
+  padding: 28px;
+}
+.heading__title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.field__label {
+  font-size: 16px;
+  color: #a5d4ff;
+}
+
+.field__input {
+  border: 1px solid #00b3ff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.field-disabled {
+  position: absolute;
+  display: none;
+}
+
+.wrap-preview {
+  width: 800px;
+  height: 403px;
+  backdrop-filter: blur(22px);
+  border-radius: 12px;
+  border: 3px solid #00b3ff;
+  transition: box-shadow 0.2s;
+  padding: 12px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px #00b3ff, 0 0 13px #00b3ff, 0 0 10px #00b3ff;
+}
+.wrap-preview .form-preview {
+  display: flex;
+  gap: 35px;
+}
+.wrap-preview .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 16px;
+  max-width: 395px;
+  height: 550px;
+  line-height: 1.2;
+}
+.wrap-preview img {
+  border-radius: 8px;
+  height: 375px;
+  width: 340px;
+  object-fit: contain;
+  background-color: #fff;
+}
+.wrap-preview .product-info__title {
+  font-size: 22px;
+  color: rgb(255, 107, 107);
+  text-shadow: 0 0 10px rgb(255, 0, 0), 0 0 20px rgb(255, 0, 0);
+  height: 55px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.wrap-preview .product-info__subtitle {
+  height: 63px;
+  overflow: hidden;
+  word-wrap: break-word;
+  font-size: 18px;
+}
+.wrap-preview .product-info__button {
+  border: 3px dotted #33d3ff;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  max-width: 300px;
+  margin: 0 auto;
+  color: rgb(255, 255, 79);
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.wrap-preview .product-info__button:hover {
+  background-color: rgba(46, 1, 65, 0.359);
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
+  border-color: transparent;
+  color: white;
+}
+.wrap-preview .product-card__category-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wrap-preview .product-info__category {
+  color: #fff;
+  padding: 4px 8px;
+  width: fit-content;
+  border-radius: 14px;
+  font-size: 14px;
+}
+.wrap-preview .background-green {
+  background-color: rgb(10, 173, 10);
+}
+.wrap-preview .background-blue {
+  background-color: rgb(62, 62, 255);
+}
+.wrap-preview .background-purple {
+  background-color: #712bd4;
+}
+
+.field__input {
+  border: 2px solid #00b3ff;
+  width: 70px;
+}
+
+.field__input:focus {
+  box-shadow: 0px 0px 10px #33d3ff;
+}
+
+.product-info__divider {
+  width: 100%;
+  height: 1.5px;
+  background-color: #00b3ff;
+}
+
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.3137254902);
+  background-blend-mode: multiply;
+  background-image: url("/img/bg-purchase.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.product-create__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.product-create__menu a:first-of-type {
+  color: #34c2ff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.2s ease-in;
+}
+.product-create__menu a:first-of-type:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+}
+
+.product-list__link {
+  text-decoration: none;
+  color: #34c2ff;
+  font-size: 18px;
+  transition: color 0.2s ease-in-out;
+}
+.product-list__link:hover {
+  color: #fff;
+}
+
+.product-cards {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 310px);
+  gap: 18px;
+  margin: 0 auto;
+}
+
+.product-list__title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 40px;
+  padding-top: 60px;
+}
+
+.wrap {
+  width: 310px;
+  backdrop-filter: blur(22px);
+  border-radius: 12px;
+  border: 2px solid #00b3ff;
+  transition: box-shadow 0.2s;
+  padding: 12px;
+}
+.wrap:hover {
+  box-shadow: 0 0 25px #00b3ff, 0 0 13px #00b3ff, 0 0 10px #00b3ff;
+  outline: 2px solid #00b3ff;
+}
+.wrap .product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  width: 283px;
+  height: 550px;
+  line-height: 1.2;
+}
+.wrap .product-card img {
+  border-radius: 8px;
+  height: 260px;
+  object-fit: contain;
+  background-color: #fff;
+}
+.wrap .product-card span {
+  color: rgb(0, 195, 255);
+  font-size: 18px;
+}
+.wrap .product-card h2 {
+  font-size: 16px;
+}
+.wrap .product-card .price-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+.wrap .product-card p:first-of-type {
+  height: 100px;
+  overflow: hidden;
+  width: 283px;
+  word-wrap: break-word;
+}
+.wrap .product-card .product-card__category {
+  background-color: green;
+  color: #fff;
+  padding: 4px 8px;
+  width: fit-content;
+  border-radius: 14px;
+  font-size: 16px;
+}
+.wrap .product-card .background-green {
+  background-color: rgb(10, 173, 10);
+}
+.wrap .product-card .background-blue {
+  background-color: rgb(62, 62, 255);
+}
+.wrap .product-card .background-purple {
+  background-color: #712bd4;
+}
+.wrap .product-card a {
+  border: 3px dotted #33d3ff;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  max-width: 300px;
+  margin: 0 auto;
+  color: rgb(255, 255, 79);
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.wrap .product-card a:hover {
+  background-color: rgba(46, 1, 65, 0.359);
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
+  border-color: transparent;
+  color: white;
+}
+
+.heading p {
+  color: #a5d4ff;
+}
+
+.product-preview {
+  padding: 40px 0 40px 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .product-cards {
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    justify-items: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .product-list__title {
+    padding-top: 30px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

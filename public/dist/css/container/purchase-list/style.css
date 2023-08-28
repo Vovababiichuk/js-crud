@@ -1,0 +1,122 @@
+.heading {
+  text-align: center;
+  font-size: 18px;
+  padding: 28px;
+}
+.heading__title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.product-info__divider {
+  width: 100%;
+  height: 1.5px;
+  background-color: #00b3ff;
+}
+
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.3137254902);
+  background-blend-mode: multiply;
+  background-image: url("/img/bg-purchase.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.product-create__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 100px;
+}
+.product-create__menu a:first-of-type {
+  color: #34c2ff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.2s ease-in;
+}
+.product-create__menu a:first-of-type:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+}
+
+.product-list__link {
+  text-decoration: none;
+  color: #34c2ff;
+  font-size: 18px;
+  transition: color 0.2s ease-in-out;
+}
+.product-list__link:hover {
+  color: #fff;
+}
+
+.purchase-list__items {
+  display: grid;
+  grid-template-columns: 100px 360px 100px 100px 100px 100px;
+  text-align: center;
+  font-size: 18px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 16px 0;
+  margin: 0 auto;
+  max-width: 906px;
+  transition: all 0.2s ease-in-out;
+}
+.purchase-list__items:hover {
+  max-width: 906px;
+  background-color: rgba(46, 1, 65, 0.359);
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+.purchase-list__items small {
+  color: rgb(0, 195, 255);
+  text-shadow: 0 0 10px rgb(0, 195, 255), 0 0 20px rgb(0, 195, 255);
+  margin-bottom: 10px;
+  display: block;
+  font-weight: medium;
+}
+.purchase-list__items span {
+  display: block;
+}
+
+.purchase-list__divider {
+  max-width: 880px;
+  height: 1.6px;
+  background-color: #33d3ff;
+  margin: 0 auto;
+}
+
+.purchase-list__link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.purchase-list__list {
+  line-height: 1.2;
+}
+
+.purchase-list__btn {
+  font-size: 22px;
+  color: red;
+}
+.purchase-list__btn span {
+  display: block;
+}
+.purchase-list__btn:hover {
+  color: #ff4f4f;
+  text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+}
+
+/*# sourceMappingURL=style.css.map */

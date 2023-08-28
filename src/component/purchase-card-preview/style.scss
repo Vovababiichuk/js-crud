@@ -1,0 +1,113 @@
+@use '../../component/field/style.scss' as field;
+
+.wrap-preview {
+  width: 800px;
+  height: 403px;
+  backdrop-filter: blur(22px);
+  border-radius: 12px;
+  border: 3px solid #00b3ff;
+  transition: box-shadow 0.2s;
+  padding: 12px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px #00b3ff, 0 0 13px #00b3ff,
+    0 0 10px #00b3ff;
+
+  .form-preview {
+    display: flex;
+    gap: 35px;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 16px;
+    max-width: 395px;
+    height: 550px;
+    line-height: 1.2;
+  }
+
+  img {
+    border-radius: 8px;
+    height: 375px;
+    width: 340px;
+    object-fit: contain;
+    background-color: #fff;
+  }
+
+  .product-info__title {
+    font-size: 22px;
+    // color: rgb(255, 49, 49);
+    color: rgb(255 107 107);
+    text-shadow: 0 0 10px rgb(255, 0, 0),
+      0 0 20px rgb(255, 0, 0);
+    height: 55px;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+
+  .product-info__subtitle {
+    height: 63px;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 18px;
+  }
+
+  .product-info__button {
+    border: 3px dotted #33d3ff;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    max-width: 300px;
+    margin: 0 auto;
+    color: rgb(255, 255, 79);
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    &:hover {
+      background-color: rgba(46, 1, 65, 0.359);
+      box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff,
+        0px 0px 10px #33d3ff;
+      border-color: transparent;
+
+      color: white;
+    }
+  }
+
+  .product-card__category-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .product-info__category {
+    color: #fff;
+    padding: 4px 8px;
+    width: fit-content;
+    border-radius: 14px;
+    font-size: 14px;
+  }
+
+  .background-green {
+    background-color: rgb(10, 173, 10);
+  }
+
+  .background-blue {
+    background-color: rgb(62, 62, 255);
+  }
+
+  .background-purple {
+    background-color: #712bd4;
+  }
+}
+
+.field__input {
+  border: 2px solid #00b3ff;
+  width: 70px;
+}
+
+.field__input:focus {
+  box-shadow: 0px 0px 10px #33d3ff;
+}

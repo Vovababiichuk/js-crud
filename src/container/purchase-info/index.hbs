@@ -1,0 +1,75 @@
+<main class="main">
+   <section class="purchase-info">
+      <div class="wrapper">
+         <div class="container">
+            <div class="product-create__menu">
+               <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+               <a class="product-info__link" href="/purchase-list"><i
+                     class="fa-solid fa-backward"></i> Back to cart <i
+                     class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            {{> purchase-heading title="Information about ordering"}}
+            <div class="wrap">
+               {{#with data.list}}
+               <ul class="purchase-info__list">
+                  <div class="purchase-info__items-inner">
+                     <div class="purchase-info__id">
+                        <small>ID:</small>
+                        <span>{{id}}</span>
+                     </div>
+                     <div class="purchase-info__name">
+                        <small>Name:</small>
+                        <span>{{product.title}}</span>
+                     </div>
+                  </div>
+                  <li class="purchase-info__items border-bottom">
+                  </li>
+                  <li class="purchase-info__items">
+                     <div>
+                        <small>First Name:</small>
+                        <span>{{firstname}}</span>
+                     </div>
+                     <div>
+                        <small>Last Name:</small>
+                        <span>{{lastname}}</span>
+                     </div>
+                  </li>
+                  <li class="purchase-info__items border-bottom">
+                     <div>
+                        <small>Phone:</small>
+                        <span>{{phone}}</span>
+                     </div>
+                     <div>
+                        <small>Email:</small>
+                        <span>{{email}}</span>
+                     </div>
+                  </li>
+                  <li class="purchase-info__items">
+                     <div>
+                        <small>Price:</small>
+                        <span>{{product.price}}</span>
+                     </div>
+                     <div>
+                        <small>Delivery price:</small>
+                        <span>{{deliveryPrice}}</span>
+                     </div>
+                  </li>
+                  <li class="purchase-info__items border-bottom">
+                     <div>
+                        <small>Total Price:</small>
+                        <span class="total-price">{{totalPrice}}</span>
+                     </div>
+                     <div>
+                        <small>Bonuses accrued:</small>
+                        <span>{{bonus}}</span>
+                     </div>
+                  </li>
+               </ul>
+               <a href="/purchase-edit?id={{id}}" class="purchase-info__edit">Change
+                  order details</a>
+               {{/with}}
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

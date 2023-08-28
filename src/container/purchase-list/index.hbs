@@ -1,0 +1,74 @@
+<main class="main">
+   <section class="purchase-list">
+      <div class="wrapper">
+         <div class="container">
+            <div class="product-create__menu">
+               <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+               <a class="product-list__link" href="/purchase-product"><i
+                     class="fa-solid fa-backward"></i> Back to the products page</a>
+            </div>
+            <ul class="purchase-list__list">
+               {{#each data.list}}
+               <li class="purchase-list__items"
+                  onclick="window.location.href='/purchase-info?id={{id}}'">
+                  <div>
+                     <small>ID:</small>
+                     <span>{{id}}</span>
+                  </div>
+                  <div>
+                     <small>Products:</small>
+                     <span>{{product.title}}</span>
+                  </div>
+                  <div>
+                     <small>Price:</small>
+                     <span>{{totalPrice}} ₴</span>
+                  </div>
+                  <div>
+                     <small>Bonus:</small>
+                     <span>{{bonus}}</span>
+                  </div>
+                  <div>
+                     <small>Quantity:</small>
+                     <span>{{amount}}</span>
+                  </div>
+                  <div>
+                     <button class="purchase-list__btn" type="submit"
+                        data-id="{{id}}"
+                        onclick="deletePurchase({{id}})"><i
+                           class="fa-solid fa-trash"></i>
+                        <span>Delete</span></button>
+                  </div>
+               </li>
+               <div class="purchase-list__divider"></div>
+               {{/each}}
+            </ul>
+         </div>
+      </div>
+   </section>
+</main>
+
+<script>
+function deletePurchase(id) {
+  if (
+    confirm(
+      'Are you sure you want to delete this purchase?',
+    )
+  ) {
+    fetch(`/purchase-delete?id=${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Вдало видалено, оновіть інтерфейс списку
+          window.location.reload()
+        } else {
+          alert('Failed to delete purchase.')
+        }
+      })
+      .catch((error) => {
+        console.error('Error deleting purchase:', error)
+      })
+  }
+}
+</script>

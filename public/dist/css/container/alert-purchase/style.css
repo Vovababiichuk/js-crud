@@ -1,0 +1,63 @@
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.3137254902);
+  background-blend-mode: multiply;
+  background-image: url("/img/bg-purchase.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.purchase-error {
+  padding: 100px;
+  text-align: center;
+  font-size: 24px;
+}
+.purchase-error h2,
+.purchase-error h1 {
+  margin-bottom: 15px;
+}
+.purchase-error a {
+  color: yellow;
+  font-size: 28px;
+}
+.purchase-error a:hover {
+  text-decoration: none;
+  text-shadow: 0 0 10px #f2ff00;
+}
+
+.wrap {
+  max-width: 400px;
+  margin: 0 auto;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 0 25px #00b3ff, 0 0 10px #00b3ff;
+  border-radius: 10px;
+  margin-top: 80px;
+}
+.wrap:hover {
+  box-shadow: 0 0 25px #00b3ff, 0 0 15px #00b3ff;
+  backdrop-filter: blur(38px);
+  outline: 3px solid #00b3ff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 10px;
+}
+
+.fa-circle-exclamation {
+  color: red;
+}
+
+.att {
+  color: rgb(0, 255, 0);
+  display: block;
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,22 @@
+<main>
+   <section class="product-list">
+      <div class="wrapper">
+         <div class="container">
+            <div class="product-create__menu">
+               <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+               <a class="product-list__link" href="/purchase-product"><i
+                     class="fa-solid fa-backward"></i> Back to the products page</a>
+            </div>
+            <div class="product-preview">
+               {{> purchase-card-preview data=data}}
+            </div>
+            {{> purchase-heading title="Other products" info="Computers and laptops"}}
+            <div class="product-cards">
+               {{#each data.list}}
+               {{> purchase-card data=this}}
+               {{/each}}
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

@@ -1,0 +1,40 @@
+<main>
+   <section class="product-list">
+      <div class="wrapper">
+         <div class="container">
+            <div class="product-create__menu">
+               <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+               <a class="product-list__link" href="/purchase-list">
+               <i class="fa-solid fa-cart-shopping"></i> Cart
+               <span class="cart-badge">0</span>
+               </a>
+            </div>
+            {{> purchase-heading title="Products" info="Computers and laptops/Computers, nettops, monoblocks"}}
+            <div class="product-cards">
+               {{#each data.list}}
+               {{> purchase-card data=this}}
+               {{/each}}
+            </div>
+         </div>
+      </div>
+   </section>
+</main>
+
+<script>
+   // Отримати бейдж та оновити його значення
+function updateCartBadge() {
+  fetch('/get-cart-count')
+    .then(response => response.json())
+    .then(data => {
+      const cartBadge = document.querySelector('.cart-badge');
+      cartBadge.textContent = data.cartCount;
+    })
+    .catch(error => {
+      console.error('Error updating cart badge:', error);
+    });
+}
+
+// Викликати оновлення при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+
+</script>

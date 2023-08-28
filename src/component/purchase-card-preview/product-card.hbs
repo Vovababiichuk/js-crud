@@ -1,0 +1,28 @@
+{{#with data.product}}
+<div class="wrap-preview">
+   <div class="product-card">
+      <form class="form-preview" method="POST"
+         action="/purchase-basket?id={{id}}">
+         <img src="{{img}}" alt="{{title}}">
+         <div class="product-info">
+            <h2 class="product-info__title">{{title}}</h2>
+            {{> divider}}
+            <p class="product-info__subtitle">{{description}}</p>
+            {{> divider}}
+            <div class="product-card__category-inner">
+               {{#each category}}
+               {{#if isBadge}}
+               <span
+                  class="product-info__category product-info__category--{{id}} background-{{color}}">{{text}}</span>
+               {{/if}}
+               {{/each}}
+            </div>
+            {{> field label="Quantity" type="number" name="amount" value=amount}}
+            <button class="product-info__button" type="submit">Buy
+               it now:
+               {{price}} ₴</button>
+         </div>
+      </form>
+   </div>
+</div>
+{{/with}}
