@@ -230,4 +230,11 @@
   .product-create__title {
     padding-top: 30px;
   }
+
+  .form {
+
+    .form__content-info {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }

@@ -185,4 +185,16 @@
   color: white;
 }
 
+@media screen and (max-width: 500px) {
+  .purchase-info__items {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .purchase-info__items:not(:first-of-type) {
+    padding: 8px 0;
+  }
+  .media {
+    margin-bottom: 16px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
