@@ -226,8 +226,39 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 540px) {
   .product-create__title {
     padding-top: 30px;
+  }
+
+  .wrapper {
+    padding: 14px 0;
+  }
+
+  .product-create__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .form {
+    .form__content-info {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+    }
+
+    .form__name {
+      font-size: 18px;
+    }
+  }
+
+  .form__list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
   }
 }
