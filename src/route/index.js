@@ -652,7 +652,7 @@ PurchaseProduct.add(
 
 PurchaseProduct.add(
   '/img/img-purchase/img622.jpg',
-  'Computer QUBE Ігровий Intel Core i5-10400F / RAM 1 ГБ / HDD 1ТБ',
+  'Computer QUBE Gaming Intel Core i5-10400F / RAM 1 ГБ / HDD 1ТБ',
   'Intel Core i5-10400F (2.9 — 4.3 ГГц) / RAM 16 ГБ / HDD 1 ТБ + SSD 240 ГБ / nVidia GeForce RTX 3060, 12 ГБ / без ОД / LAN / без ОС',
   [
     {
