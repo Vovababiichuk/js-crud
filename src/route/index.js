@@ -798,7 +798,9 @@ class Purchase {
       if (data.phone) purchase.phone = data.phone
       if (data.email) purchase.email = data.email
 
-      purchase.bonus = Math.round(Purchase.calcBonusAmount(purchase.totalPrice));
+      purchase.bonus = Math.round(
+        Purchase.calcBonusAmount(purchase.totalPrice),
+      )
 
       return true
     } else {
@@ -1176,6 +1178,27 @@ router.post('/purchase-update', function (req, res) {
   const { firstname, lastname, phone, email } = req.body
   const id = Number(req.query.id)
 
+  const purchase = Purchase.getById(id);
+
+  const isChanged =
+    firstname !== purchase.firstname ||
+    lastname !== purchase.lastname ||
+    phone !== purchase.phone ||
+    email !== purchase.email;
+
+  if (!isChanged) {
+    return res.render('alert-purchase', {
+      style: 'alert-purchase',
+
+      data: {
+        info: '⚠️ Warning!',
+        message: '⚠️ Make changes to at least one field',
+        link: `/purchase-edit?id=${id}`,
+      },
+    })
+  }
+ 
+
   Purchase.updateById(id, {
     firstname,
     lastname,
@@ -1190,7 +1213,7 @@ router.post('/purchase-update', function (req, res) {
       info: '✅ Success!',
       message: '✅ Purchase details updated',
       link: `/purchase-info?id=${id}`,
-    }
+    },
   })
 })
 
