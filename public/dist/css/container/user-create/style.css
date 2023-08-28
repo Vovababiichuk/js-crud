@@ -187,7 +187,7 @@ main {
   }
   .user-menu {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     gap: 14px;
     padding-top: 20px;
     margin-bottom: 8px;

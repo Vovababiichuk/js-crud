@@ -1,0 +1,45 @@
+<main class="main">
+   <div class="wrapper">
+      <div class="container">
+         <div class="product-create__menu">
+            <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+            <a class="product-list__link" href="/purchase-list"><i
+                  class="fa-solid fa-backward"></i> Back to the cart</a>
+         </div>
+         <div class="wrap">
+            <div class="form">
+               {{#with data}}
+               <form method="POST" action="/purchase-update?id={{purchase.id}}">
+                  <h2 class="form__title">Changing product details</h2>
+                  <div class="form__content">
+                     <div class="form__info">
+                        <p class="form__name">Name: {{purchase.product.title}}</p>
+                        <p class="form__name">ID: {{purchase.id}}</p>
+                     </div>
+                     <div class="form__content-info">
+                        <div class="form__field">
+                           {{> field label='First Name' name='firstname'
+                           value=purchase.firstname}}
+                        </div>
+                        <div class="form__field">
+                           {{> field label='Last Name' name='lastname'
+                           value=purchase.lastname}}
+                        </div>
+                     </div>
+                     <div class="form__content-info">
+                        <div class="form__field">
+                           {{> field label='Phone' type='tel' name='phone' value=purchase.phone}}
+                        </div>
+                        <div class="form__field">
+                           {{> field label='Email' type='email' name='email' value=purchase.email}}
+                        </div>
+                     </div>
+                     {{> button text='Save changes'}}
+                  </div>
+               </form>
+               {{/with}}
+            </div>
+         </div>
+      </div>
+   </div>
+</main>

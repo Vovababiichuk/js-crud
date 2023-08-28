@@ -1,0 +1,23 @@
+.button {
+  border: 3px dotted #33d3ff;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  max-width: 300px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}
+.button:hover {
+  background-color: rgba(46, 1, 65, 0.359);
+  box-shadow: 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff, 0px 0px 10px #33d3ff;
+  border-color: transparent;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

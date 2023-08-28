@@ -1,0 +1,75 @@
+<main class="main">
+   <div class="wrapper">
+      <div class="container">
+         <div class="product-create__menu">
+            <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+            <a class="product-list__link" href="/purchase-card-preview?id={{data.id}}"><i
+                  class="fa-solid fa-backward"></i> Back to the product</a>
+         </div>
+         <div class="wrap">
+            <div class="form">
+               {{#with data}}
+               <form method="POST" action="/purchase-submit?id={{id}}">
+                  <h2 class="form__title">Your order</h2>
+                  <div class="form__content">
+                     <div class="form__info">
+                        <p class="form__name">{{info.productTitle}}</p>
+                        <ul class="form__list">
+                           <li><span>Quantity:</span> {{info.quantity}}</li>
+                           <li><span>Price:</span> {{info.productPrice}} ₴</li>
+                           <li><span>Delivery cost:</span> {{deliveryPrice}} ₴</li>
+                        </ul>
+                     </div>
+                     <div class="form__content-info">
+                        <div class="form__field">
+                           {{> field label='First Name' name='firstname'
+                           value=name required=true}}
+                        </div>
+                        <div class="form__field">
+                           {{> field label='Last Name' name='lastname'
+                           value=name required=true}}
+                        </div>
+                     </div>
+                     <div class="form__content-info">
+                        <div class="form__field">
+                           {{> field label='Phone' type='tel' name='phone' value=phone required=true}}
+                        </div>
+                        <div class="form__field">
+                           {{> field label='Email' type='email' name='email' value=email required=true}}
+                        </div>
+                     </div>
+                     <div class="form__field">
+                        {{> textarea}}
+                        <small>The comment will be passed to the courier</small>
+                     </div>
+                     <div class="form__content-info">
+                        <div class="form__field">
+                           {{> field label='Write-off bonuses' type="number" name='bonus'
+                           placeholder=this.bonus}}
+                        </div>
+                        <div class="form__field">
+                           {{> field label='Promo code' name='promocode'
+                           value=promocode placeholder='BLACKFRIDAY'}}
+                        </div>
+                     </div>
+                     {{!-- приховані поля які передають дані --}}
+                     {{> field value=totalPrice name='totalPrice' disabled=true}}
+                     {{> field value=productPrice name='productPrice' disabled=true}}
+                     {{> field value=deliveryPrice name='deliveryPrice' disabled=true}}
+                     {{> field value=amount name="amount" disabled=true}}
+                     {{!-- приховані поля які передають дані --}}
+                     <strong class="total">
+                        <small>(<i class="fa-solid fa-coins"></i> {{bonus}} ₴ -- Bonuses accrued)</small>
+                        <div>
+                           <span><i class="fa-solid fa-credit-card"></i> Total: {{totalPrice}} ₴</span>
+                        </div>
+                     </strong>
+                     {{> button icon='<i class="fa-solid fa-cart-plus"></i>' text='Place your order'}}
+                  </div>
+               </form>
+               {{/with}}
+            </div>
+         </div>
+      </div>
+   </div>
+</main>

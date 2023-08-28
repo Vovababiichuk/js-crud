@@ -1,0 +1,21 @@
+{{#with data}}
+<div class="wrap">
+   <div class="product-card">
+      <img src="{{img}}" alt="images-card">
+      <h2><span>Name:</span> {{title}}</h2>
+      <p><span class="description">Description:</span>
+         {{description}}</p>
+      <div class="product-card__category-inner">
+         {{#each category}}
+         {{#if isBadge}}
+         <span class="product-card__category product-card__category--{{id}} background-{{color}}">{{text}}</span>
+         {{/if}}
+         {{/each}}
+      </div>
+      <span class="product-card__quantity">Available quantity: <small>{{amount}}</small></span>
+      {{!-- буде додаватися сторінка товару (/purchase-card-preview) і через query параметр ми передаємо id --}}
+      <a href="/purchase-card-preview?id={{id}}">Buy it now:
+         {{price}} ₴</a>
+   </div>
+</div>
+{{/with}}
