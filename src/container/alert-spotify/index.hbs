@@ -1,0 +1,23 @@
+{{!
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+}}
+
+<div class="wrapper">
+  <div class="container">
+    <div class="wrap">
+      {{#with data}}
+      <div class="spotify-error">
+        <h1><i class="fa-solid fa-triangle-exclamation"></i> {{info}}</h1>
+        <h2><i class="fa-solid fa-triangle-exclamation"></i> {{message}}</h2>
+        <a href="{{link}}"><i class="fa-solid fa-backward"></i> Go back!</a>
+      </div>
+      {{/with}}
+    </div>
+  </div>
+</div>
+
+{{!
+Цей код містить лише те, що буде виводитись в <body>
+  Адже наш layout/default.hbs має вже структуру HTML
+  }}

@@ -1,5 +1,6 @@
 // Підключаємо технологію express для back-end сервера
 const express = require('express')
+const { compile } = require('morgan')
 // Cтворюємо роутер - місце, куди ми підключаємо ендпоїнти
 const router = express.Router()
 
@@ -1178,13 +1179,13 @@ router.post('/purchase-update', function (req, res) {
   const { firstname, lastname, phone, email } = req.body
   const id = Number(req.query.id)
 
-  const purchase = Purchase.getById(id);
+  const purchase = Purchase.getById(id)
 
   const isChanged =
     firstname !== purchase.firstname ||
     lastname !== purchase.lastname ||
     phone !== purchase.phone ||
-    email !== purchase.email;
+    email !== purchase.email
 
   if (!isChanged) {
     return res.render('alert-purchase', {
@@ -1197,7 +1198,6 @@ router.post('/purchase-update', function (req, res) {
       },
     })
   }
- 
 
   Purchase.updateById(id, {
     firstname,
@@ -1218,6 +1218,487 @@ router.post('/purchase-update', function (req, res) {
 })
 
 // =============================================================================
+
+//! ================================SPOTIFY=============================================
+//! ================================SPOTIFY=============================================
+
+class TrackSpotify {
+  static #list = []
+
+  constructor(link) {
+    this.id = Math.floor(Math.random() * 90000) + 10000
+    this.link = link
+  }
+
+  static addTrack(track) {
+    TrackSpotify.#list.push(track)
+  }
+
+  static getRandomTrack() {
+    const randomIndex = Math.floor(
+      Math.random() * TrackSpotify.#list.length,
+    )
+    return TrackSpotify.#list[randomIndex]
+  }
+
+  static getList() {
+    return TrackSpotify.#list
+  }
+}
+
+const track1 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7MnPqlRg4XPv9cqHF76tbs?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+const track2 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/51HCQFTlKHs7w9Fxo9QcjA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+const track3 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7fvQ3kv9pCOkFyGdON4k6H?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+const track4 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/539yxbKKHPHrI1vc3BI2Ee?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+
+TrackSpotify.addTrack(track1)
+TrackSpotify.addTrack(track2)
+TrackSpotify.addTrack(track3)
+TrackSpotify.addTrack(track4)
+
+class Track {
+  // статичне приватне поле для зберігання списку обьектів Track
+  static #list = []
+
+  constructor(name, author, image) {
+    this.id = Math.floor(1000 + Math.random() * 90000)
+    this.name = name
+    this.author = author
+    this.image = image
+  }
+
+  //статичний метод для створення обьекту Track і додавання його в список #list
+  static create(name, author, image) {
+    const newTrack = new Track(name, author, image)
+    this.#list.push(newTrack)
+    return newTrack
+  }
+
+  //статичний метод для отримання всього списку треків
+  static getList() {
+    return this.#list.reverse()
+  }
+
+  static getById(id) {
+    return (
+      Track.#list.find((track) => track.id === id) || null
+    )
+  }
+}
+
+Track.create(
+  'Close to Me',
+  'Max Oazo',
+  '/img/spotify/close-to-me.jpg',
+)
+
+Track.create('Sadness', 'Skybar', '/img/spotify/deep.jpg')
+
+Track.create(
+  'Essense',
+  'Shimmer Johnson',
+  '/img/spotify/essense.jpg',
+)
+
+Track.create(
+  'Never Gonna Say Goodbye',
+  'Max Oazo',
+  '/img/spotify/oazo.jpg',
+)
+
+Track.create(
+  'Another Dream',
+  'Furkan Sert',
+  '/img/spotify/ricodisko.jpg',
+)
+
+Track.create(
+  'Yoy Are My Soul',
+  'Ahmet Kilic',
+  '/img/spotify/you-my-soul.jpg',
+)
+
+Track.create('Anagramma', 'ZOYA', '/img/spotify/zoya.jpg')
+
+class PlayList {
+  static #list = []
+
+  constructor(name, image, amount) {
+    this.id = Math.floor(1000 + Math.random() * 90000)
+    this.name = name
+    this.image = image
+    this.amount = amount
+    // сам список треків які додані до PlayList
+    this.tracks = []
+  }
+
+  static create(name, image, amount) {
+    const newPlayList = new PlayList(name, image, amount)
+    this.#list.unshift(newPlayList)
+    return newPlayList
+  }
+
+  // отримання всього списку плейлистів
+  static getList() {
+    // return this.#list.reverse()
+    return [...this.#list]
+  }
+
+  static makeMix(playlist) {
+    const allTracks = Track.getList()
+
+    let randomTracks = allTracks
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3)
+
+    playlist.tracks.push(...randomTracks)
+  }
+
+  static getById(id) {
+    return (
+      PlayList.#list.find(
+        (playlist) => playlist.id === id,
+      ) || null
+    )
+  }
+  
+  updateAmount() {
+    this.amount = this.tracks.length
+  }
+
+  deleteTrackById(trackId) {
+    this.tracks = this.tracks.filter(
+      (track) => track.id !== trackId,
+    )
+    this.updateAmount()
+  }
+
+  addTrack(track) {
+    this.tracks.unshift(track)
+    this.updateAmount()
+  }
+
+  static randomImage() {
+    const imagesPlaylist = [
+      '/img/spotify/close-to-me.jpg',
+      '/img/spotify/deep.jpg',
+      '/img/spotify/oazo.jpg',
+      '/img/spotify-img/list-img1.jpg',
+      '/img/spotify-img/list-img5.jpg',
+    ]
+
+    const randomImage =
+      imagesPlaylist[
+        Math.floor(Math.random() * imagesPlaylist.length)
+      ]
+    return randomImage
+  }
+
+  static findListByValue(name) {
+    return this.#list.filter((playlist) =>
+      playlist.name
+        .toLowerCase()
+        .includes(name.toLowerCase()),
+    )
+  }
+}
+
+PlayList.create(
+  'Songs I liked',
+  '/img/spotify-img/list-img3.jpg',
+  3,
+)
+PlayList.create(
+  'The joint album',
+  '/img/spotify-img/list-img5.jpg',
+  9,
+)
+PlayList.create(
+  'Yin Yang',
+  '/img/spotify-img/list-img8.jpg',
+  5,
+)
+PlayList.create(
+  'Songs I liked',
+  '/img/spotify-img/list-img1.jpg',
+  3,
+)
+PlayList.create(
+  'The joint album',
+  '/img/spotify-img/list-img4.jpg',
+  9,
+)
+PlayList.create(
+  'Yin Yang',
+  '/img/spotify-img/list-img2.jpg',
+  5,
+)
+
+// ============================================================
+
+router.get('/spotify-list', function (req, res) {
+  res.render('spotify-list', {
+    style: 'spotify-list',
+    title: 'JS-PRACTICE-CRUD',
+
+    data: {
+      list: PlayList.getList(),
+    },
+  })
+})
+
+// ==========================================
+
+router.get('/spotify-choose', function (req, res) {
+  res.render('spotify-choose', {
+    style: 'spotify-choose',
+    title: 'JS-PRACTICE-CRUD',
+
+    data: {
+      list: TrackSpotify.getList(),
+    },
+  })
+})
+
+// ==========================================
+
+router.get('/spotify-create', function (req, res) {
+  //якщо в мене є isMix
+  const isMix = !!req.query.isMix
+
+  res.render('spotify-create', {
+    style: 'spotify-create',
+    title: 'JS-PRACTICE-CRUD',
+
+    data: {
+      isMix,
+    },
+  })
+})
+
+// ==============================================
+
+router.post('/spotify-create', function (req, res) {
+  const isMix = !!req.query.isMix
+  const name = req.body.name
+
+  if (!name) {
+    return res.render('alert-spotify', {
+      style: 'alert-spotify',
+
+      data: {
+        info: 'Warning!',
+        message: 'Please enter the name in the field!',
+        link: isMix
+          ? `/spotify-create?isMix=true`
+          : `/spotify-create`,
+      },
+    })
+  }
+
+  const randomImage = PlayList.randomImage()
+  const amount = isMix ? 3 : 0
+  const playlist = PlayList.create(name, randomImage, amount)
+
+  if (isMix) {
+    PlayList.makeMix(playlist)
+  }
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+      image: playlist.image,
+    },
+  })
+})
+
+// ============================
+
+router.get('/spotify-playlist', function (req, res) {
+  const id = Number(req.query.id)
+
+  const playlist = PlayList.getById(id)
+
+  if (!playlist) {
+    return res.render('alert-spotify', {
+      style: 'alert-spotify',
+
+      data: {
+        info: 'Error!',
+        message: 'Playlist with that ID was not found!',
+        link: `/spotify-choose`,
+      },
+    })
+  }
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
+
+// ==============================
+
+router.get('/spotify-track-delete', function (req, res) {
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
+
+  const playlist = PlayList.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert-spotify', {
+      style: 'alert-spotify',
+
+      data: {
+        info: 'Error!',
+        message: 'Playlist with that ID was not found!',
+        link: `/spotify-playlist?id=${playlistId}`,
+      },
+    })
+  }
+
+  playlist.deleteTrackById(trackId)
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
+
+// ==============================
+
+router.get('/spotify-playlist-add', function (req, res) {
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
+
+  const playlist = PlayList.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert-spotify', {
+      style: 'alert-spotify',
+
+      data: {
+        info: 'Error!',
+        message: 'Playlist with that ID was not found!',
+        link: `/spotify-choose`,
+      },
+    })
+  }
+
+  res.render('spotify-playlist-add', {
+    style: 'spotify-playlist-add',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: Track.getList(),
+      name: playlist.name,
+    },
+  })
+})
+
+// ===============================
+
+router.get('/spotify-track-add', function (req, res) {
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
+
+  const playlist = PlayList.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert-spotify', {
+      style: 'alert-spotify',
+
+      data: {
+        info: 'Error!',
+        message: 'Playlist with that ID was not found!',
+        link: `/spotify-playlist?id=${playlistId}`,
+      },
+    })
+  }
+
+  playlist.addTrack(Track.getById(trackId))
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
+
+// =====================================
+
+router.get('/spotify-search', function (req, res) {
+  //по замовчуванню пустий рядок
+  const value = ''
+
+  const list = PlayList.findListByValue(value)
+
+  res.render('spotify-search', {
+    style: 'spotify-search',
+    title: 'JS-PRACTICE-CRUD',
+
+    data: {
+      // кількість пісень....роблю за допомогою map
+      // таким чином в list мені попадає новий масив який має всі поля окрім tracks і має amount який мені потрібно ось тут вивести...
+      // list: list.map(({ tracks, ...rest }) => ({
+      //   ...rest,
+      //   amount: tracks.length,
+      // })),
+      // value,
+
+      list: PlayList.getList(),
+    },
+  })
+})
+
+// ==========================================
+
+router.post('/spotify-search', function (req, res) {
+  //витягуються дані з value
+  const value = req.body.value || ''
+
+  // отримується список плейлистів по цьому value
+  const list = PlayList.findListByValue(value)
+
+  // і назад точно така ж сторінка повертається
+  res.render('spotify-search', {
+    style: 'spotify-search',
+    title: 'JS-PRACTICE-CRUD',
+
+    data: {
+      list: list,
+      value: value,
+    },
+  })
+})
+
+// ==========================================
 
 // Підключаємо роутер до бек-енду
 module.exports = router

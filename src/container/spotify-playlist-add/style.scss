@@ -1,0 +1,32 @@
+@use '../../lib/service.scss' as s;
+@use '../../lib/spotify.scss' as spotify;
+
+.add-button {
+   display: grid;
+   grid-template-columns: 92px 1fr;
+   align-items: center;
+   gap: 24px;
+   color: s.color(light2);
+   font-size: 18px;
+}
+
+.track__list {
+   background-color: #282828;
+   padding: 24px 32px;
+   border-radius: 8px;
+}
+
+@media  screen and (max-width: 680px) {
+   .track {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+   }
+
+   .track__name {
+      font-size: 22px;
+   }
+
+   .track__list {
+      padding: 24px 16px;
+   }
+}
