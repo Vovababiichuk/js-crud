@@ -1,0 +1,16 @@
+<main class="main">
+   <div class="wrapper">
+      <div class="main__content">
+         <header class="header">
+            <a href="/spotify-choose">
+               <img src="/img/svg/cross_back.svg" alt="spotify">
+            </a>
+         </header>
+         <h1 class="title title--center title--small accent">Name your playlist</h1>
+         <form class="form" method="POST" action="/spotify-create{{#if data.isMix}}?isMix=true{{/if}}">
+            <input class="form__field" type="text" placeholder="Name" name="name">
+            <button class="form__button">Create</button>
+         </form>
+      </div>
+   </div>
+</main>

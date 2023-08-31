@@ -1,0 +1,36 @@
+<main class="main-list">
+   <div class="menu">
+      <a class="menu-link" href="/"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="menu-link" href="/spotify-list"><i class="fa-solid fa-backward"></i> Back to my library</a>
+   </div>
+   {{#with data}}
+   <div class="main__content">
+      <h1 class="title title--center"><span class="accent">{{name}}</span></h1>
+      <a class="add-button"
+         href="/spotify-playlist-add?playlistId={{playlistId}}">
+         <img src="/img/svg/add_button2.svg" alt="add icon">
+         Add to playlist
+      </a>
+
+      <ul class="track__list">
+         {{#each tracks}}
+         <li class="track">
+            <img src="{{image}}" alt="{{name}}" width="100" height="100">
+            <div class="track__content">
+               <strong class="track__name">{{name}}</strong>
+               <em class="track__author">{{author}}</em>
+            </div>
+            {{!-- піднімаємось на рівень вище - {{../playlistId}}, щоб отримати
+            доступ... --}}
+            {{!-- Передаємо в якому плейлісті потрібно видалити трек і сам трек
+            --}}
+            <a
+               href="/spotify-track-delete?playlistId={{../playlistId}}&trackId={{id}}">
+               <img src="/img/svg/delete_button.svg" alt="track">
+            </a>
+         </li>
+         {{/each}}
+      </ul>
+   </div>
+   {{/with}}
+</main>

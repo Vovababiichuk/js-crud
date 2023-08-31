@@ -1,0 +1,40 @@
+<main>
+   <div class="menu">
+      <a class="menu-link" href="/"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="menu-link" href="/spotify-list"><i class="fa-solid fa-backward"></i> Back to my library</a>
+   </div>
+   <div class="main-inner main">
+      <div class="main__content">
+         <a class="logo" href="https://open.spotify.com/" target="_blank"></a>
+         <h1 class="title title--center accent">Create</h1>
+      </div>
+      <ul class="choose">
+         <a href="/spotify-create">
+            <li class="choose__item">
+               <img class="choose__image" src="img/svg/choose_1.svg" alt="spotify">
+               <div class="choose__content">
+                  <strong class="title">Playlist</strong>
+                  <p class="choose__text">Create a playlist with songs or episodes</p>
+               </div>
+            </li>
+         </a>
+         <a href="/spotify-create?isMix=true">
+            <li class="choose__item">
+               <img class="choose__image" src="img/svg/choose_2.svg" alt="spotify">
+               <div class="choose__content">
+                  <strong class="title">Mix</strong>
+                  <p class="choose__text">Combine flavors in a shared playlist with
+                     friends</p>
+               </div>
+            </li>
+         </a>
+      </ul>
+      {{#with data}}
+      <ul class="choose-list">
+         {{#each list}}
+         <li class="choose-card">{{{link}}}</li>
+         {{/each}}
+      </ul>
+      {{/with }}
+   </div>
+</main>

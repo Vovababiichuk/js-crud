@@ -1,0 +1,27 @@
+<main class="main-list">
+   <div class="menu">
+      <a class="menu-link" href="/"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="menu-link" href="/spotify-choose"><i class="fa-solid fa-square-plus"></i> Create a playlist</a>
+   </div>
+   <section class="spotify-list">
+      <div class="container">
+         <div class="spotify-list__title-inner">
+            <h1 class="spotify-list__title accent">My library</h1>
+            <a class="icon-search" href="/spotify-search"></a>
+            <a class="icon-add" href="/spotify-choose"></a>
+            <a class="logo" href="https://open.spotify.com/" target="_blank"></a>
+         </div>
+         {{#with data}}
+         <ul class="spotify-list__cards">
+            {{#each list}}
+            <li class="spotify-list__card">
+               <img src="{{image}}" alt="list images">
+               <strong>{{name}}</strong>
+               <span>{{amount}} songs</span>
+            </li>
+            {{/each}}
+         </ul>
+         {{/with }}
+      </div>
+   </section>
+</main>

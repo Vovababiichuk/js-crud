@@ -1,9 +1,12 @@
 $colorMap: (
+  dark: #121212,
   light: #ddd,
+  light2: #fff,
   yel: rgb(255, 255, 79),
   re: rgb(255, 54, 18),
   pur: rgba(179, 0, 255, 0.5),
   placeholder-color: #a5d4ff,
+  border: #808080,
 );
 
 @function color($key) {

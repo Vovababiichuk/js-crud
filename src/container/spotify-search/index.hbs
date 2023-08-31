@@ -1,0 +1,54 @@
+<main class="main-list">
+   <div class="container">
+      <div class="menu">
+         <a class="menu-link" href="/"><i class="fa-solid fa-house"></i> Home</a>
+         <a class="menu-link" href="/spotify-list"><i class="fa-solid fa-backward"></i>
+            Back to my library</a>
+      </div>
+      {{#with data}}
+      <div class="main__content">
+         <h1 class="title title--center"><span class="accent">Search a playlist</span></h1>
+         <form method="POST" action="spotify-search" class="search">
+            <img src="/img/svg/spotify-search.svg" alt="images search">
+            <input type="search" class="search__input"
+               placeholder="Enter your request" name="value" value="{{value}}"
+               id="searchInput">
+            <button class="search__button">Search</button>
+         </form>
+         <ul class="playlist__list">
+            {{#each list}}
+            <li class="playlist">
+               <img src="{{image}}" alt="{{name}}" width="150" height="150">
+               <div class="playlist__content">
+                  <strong class="playlist__name">{{name}}</strong>
+                  <span class="playlist__amount">{{amount}} songs</span>
+               </div>
+            </li>
+            {{/each}}
+         </ul>
+      </div>
+      {{/with}}
+   </div>
+</main>
+
+{{!-- Код для автоматичного пошуку  --}}
+
+{{!-- <script>
+  const searchInput = document.getElementById('searchInput');
+  const playlistList = document.querySelector('.playlist__list');
+  
+  searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    const playlists = Array.from(playlistList.children);
+    playlists.forEach(playlist => {
+      const playlistName = playlist.querySelector('.playlist__name').textContent.toLowerCase();
+      
+      if (playlistName.includes(searchTerm)) {
+        playlist.style.display = 'block';
+      } else {
+        playlist.style.display = 'none';
+      }
+    });
+  });
+</script> --}}

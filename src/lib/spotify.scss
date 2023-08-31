@@ -1,0 +1,87 @@
+@use './service.scss' as s;
+
+.main {
+  background-color: #000000e6;
+  background-blend-mode: multiply;
+  background-image: url('/img/spotify-alert.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  height: 100%;
+  min-height: 100vh;
+
+  color: s.color(light2);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px 20px;
+  gap: 40px;
+  position: relative;
+
+  .menu-link-spotify {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px #20d562;
+    position: absolute;
+    top: 20px;
+  }
+}
+
+.main__content {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+
+  h1 {
+    font-size: 38px;
+  }
+}
+
+.title {
+  font-size: 28px;
+}
+
+.title--center {
+  text-align: center;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 92px 1fr 42px;
+  gap: s.space(7);
+  align-items: center;
+  justify-items: start;
+
+  &__list {
+    display: grid;
+    gap: 28px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    align-items: flex-start;
+
+    em {
+      color: #bababa;
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+    color: s.color(light2);
+  }
+}
+
+.accent {
+  color: #3aff82;
+  text-shadow: 0 0 10px #20d562;
+}

@@ -1,0 +1,70 @@
+@use '../../lib/service.scss' as s;
+
+.wrapper {
+  background-color: #0000009f;
+  background-blend-mode: multiply;
+  background-image: url('/img/spotify-alert2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.spotify-error {
+  padding: 100px;
+  text-align: center;
+  font-size: 26px;
+
+  h2,
+  h1 {
+    margin-bottom: 15px;
+  }
+
+  a {
+    color: #3aff82;
+    font-size: 34px;
+    text-decoration: none;
+    transition: text-shadow 0.2s ease-in-out;
+    text-shadow: 0 0 10px #20D562;
+    &:hover {
+      color: #00ff5e;
+      text-decoration: underline;
+
+    }
+  }
+}
+
+.wrap {
+  max-width: 400px;
+  margin: 0 auto;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 0 10px #20D562, 0 0 20px #20D562, 0 0 30px #20D562;
+  border-radius: 10px;
+  margin-top: 80px;
+  outline: 3px solid #20D562;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 10px;
+}
+
+.purchase-error {
+  h1,
+  h2 {
+    font-size: 22px;
+  }
+
+  a {
+    font-size: 24px;
+  }
+}
+
+.fa-triangle-exclamation {
+  color: s.color(yel);
+}

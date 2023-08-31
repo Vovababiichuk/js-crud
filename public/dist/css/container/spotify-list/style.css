@@ -1,0 +1,238 @@
+.main {
+  background-color: rgba(0, 0, 0, 0.9019607843);
+  background-blend-mode: multiply;
+  background-image: url("/img/spotify-alert.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100%;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px 20px;
+  gap: 40px;
+  position: relative;
+}
+.main .menu-link-spotify {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0 0 10px #20d562;
+  position: absolute;
+  top: 20px;
+}
+
+.main__content {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+}
+.main__content h1 {
+  font-size: 38px;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.title--center {
+  text-align: center;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 92px 1fr 42px;
+  gap: 28px;
+  align-items: center;
+  justify-items: start;
+}
+.track__list {
+  display: grid;
+  gap: 28px;
+}
+.track__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  align-items: flex-start;
+}
+.track__content em {
+  color: #bababa;
+}
+.track__name {
+  font-size: 24px;
+  color: #fff;
+}
+
+.accent {
+  color: #3aff82;
+  text-shadow: 0 0 10px #20d562;
+}
+
+.main-list {
+  background-color: rgba(0, 0, 0, 0.8862745098);
+  background-blend-mode: multiply;
+  background-image: url("/img/spotify-alert.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100%;
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  padding-top: 24px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.menu .menu-link {
+  color: #34c2ff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+}
+.menu .menu-link:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+}
+
+.spotify-list__title {
+  font-size: 36px;
+  margin-bottom: 45px;
+  margin-right: 50px;
+}
+
+.spotify-list__title-inner {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.spotify-list__title-inner .icon-search {
+  position: absolute;
+  background-image: url("/img/svg/icon-search.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 42px;
+  height: 42px;
+  top: 0;
+  left: 267px;
+  display: block;
+  transition: opacity 0.2s ease-in-out;
+}
+.spotify-list__title-inner .icon-search:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.spotify-list__title-inner .icon-add {
+  position: absolute;
+  background-image: url("/img/svg/icon-add.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 320px;
+  display: block;
+  transition: opacity 0.2s ease-in-out;
+}
+.spotify-list__title-inner .icon-add:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.spotify-list__title-inner .logo {
+  content: "";
+  position: absolute;
+  background-image: url("https://open.spotifycdn.com/cdn/images/icons/Spotify_256.17e41e58.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  top: -5px;
+  left: -4px;
+  display: block;
+  transition: opacity 0.2s ease-in-out;
+}
+.spotify-list__title-inner .logo:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.spotify-list__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 245px);
+  justify-items: center;
+  grid-column-gap: 15px;
+  grid-row-gap: 22px;
+  justify-content: center;
+}
+
+.spotify-list__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  transition: transform 0.2s ease-in-out;
+}
+.spotify-list__card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.spotify-list__card img {
+  width: 245px;
+  height: 245px;
+}
+.spotify-list__card strong {
+  font-size: 20px;
+}
+.spotify-list__card span {
+  color: #bdbdbd;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 820px) {
+  .spotify-list__cards {
+    grid-template-columns: repeat(2, 245px);
+  }
+}
+@media screen and (max-width: 550px) {
+  .spotify-list__cards {
+    grid-template-columns: repeat(1, 245px);
+  }
+  .spotify-list__title-inner .logo {
+    display: none;
+  }
+  .spotify-list__title {
+    margin-right: 0;
+    margin-bottom: 90px;
+  }
+  .spotify-list__title-inner .icon-search {
+    top: 60px;
+    left: 96px;
+  }
+  .spotify-list__title-inner .icon-add {
+    top: 60px;
+    left: 160px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
