@@ -1,8 +1,3 @@
 [build]
 command = "npm run build"
-publish = "src/"
-
-[[redirects]]
-  from = "/*"
-  to = "/src/layout/default/index.hbs"
-  status = 200
+publish = "public/"
